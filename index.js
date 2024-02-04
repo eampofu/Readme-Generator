@@ -27,8 +27,8 @@ const questions = [
     },
     {
         type: "list",
-        name: "licence",
-        message: "What licence are you using?",
+        name: "license",
+        message: "What license are you using?",
         choices: ["None","MIT","Apache","Mozilla", "GNU"],
     },
     {
@@ -48,7 +48,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "questions",
+        name: "email",
         message: "Where should people contact you for questions?"
     }
 
@@ -57,7 +57,7 @@ const questions = [
 // function to write README file
 function writeToFile(fileName, data) {
       
-      console.log(process.cwd());
+     
      fs.writeFile(path.join(process.cwd() + "/output/" + fileName), data, (err) => err && console.error(err))
   
 }
@@ -71,7 +71,8 @@ function init() {
 const promptUser = (questions) => {
     inquirer.prompt(questions).then((data) => {
         console.log(data);
-       
+       const file=generateMarkdown(data);
+       writeToFile("readme-gen.md",file);
     });
 }
 // function call to initialize program
