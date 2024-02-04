@@ -56,6 +56,10 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
+      
+      console.log(process.cwd());
+     fs.writeFile(path.join(process.cwd() + "/output/" + fileName), data, (err) => err && console.error(err))
+  
 }
 
 // function to initialize program
@@ -67,6 +71,7 @@ function init() {
 const promptUser = (questions) => {
     inquirer.prompt(questions).then((data) => {
         console.log(data);
+       
     });
 }
 // function call to initialize program
