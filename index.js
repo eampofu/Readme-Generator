@@ -70,7 +70,7 @@ function init() {
 
 const promptUser = (questions) => {
     inquirer.prompt(questions).then((data) => {
-        console.log(data);
+        
        const file=generateMarkdown(data);
        writeToFile("readme-gen.md",file);
     });
